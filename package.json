@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@jrapp/log-emitter": "*",
-    "@jrapp/url-templating": "*",
     "amqplib": "0.5.1"
   }
 }
