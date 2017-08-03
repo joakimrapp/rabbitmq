@@ -1,0 +1,16 @@
+{
+    "env": {
+        "node": true,
+        "es6": true,
+        "mocha": true
+    },
+    "rules": {
+        "no-shadow": 0,
+        "curly": 0,
+        "no-irregular-whitespace": 0,
+        "no-unused-vars": 0,
+        "space-unary-ops": 0,
+        "no-undef": 1,
+        "semi": 1
+    }
+}

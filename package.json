@@ -1,0 +1,31 @@
+{
+  "name": "@jrapp/rabbitmq",
+  "version": "1.0.0",
+  "description": "Simplifies usage of RabbitMQ",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --colors --timeout 10000 --async-only --recursive ./test",
+    "lint": "./node_modules/.bin/eslint ./src",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover --config ./node_modules/@jrapp/node-project-setup/config/istanbul.yml ./node_modules/.bin/_mocha -- --recursive ./test --timeout 10000 --async-only --reporter xunit --reporter-options output=./ci/reports/coverage/test.xml",
+    "test-report": "npm -s run lint && npm -s run test && npm -s run coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:joakimrapp/rabbitmq.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joakimrapp/rabbitmq/issues"
+  },
+  "homepage": "https://github.com/joakimrapp/rabbitmq#readme",
+  "devDependencies": {
+    "@jrapp/log-writer-console-readable": "^1.0.3",
+    "@jrapp/node-project-setup": "*"
+  },
+  "dependencies": {
+    "@jrapp/log-emitter": "*",
+    "@jrapp/url-templating": "*",
+    "amqplib": "0.5.1"
+  }
+}
