@@ -31,14 +31,17 @@ module.exports = ( log, Exchange ) => {
 				`${context.display} (attempt ${attempt})` );
 			const timer = log.timer();
 			const retry = ( !context.attempts ) || ( context.attempts > attempt );
-			let promise = require( 'amqplib' ).connect( context.url )
-				.then( ( connection ) =>
-					timer.trace( 'connected', context.display ).return( connection ) );
-			return retry ? promise : promise.catch( ( err ) => {
-				timer.warning( 'connection failed', `${context.display} (retrying in ${( context.wait ).toFixed( 2 )} seconds)` );
-				return Connection.wait( context.wait )
-					.then( () => Connection.connect( context, attempt + 1 ) );
-			} );
+			return require( 'amqplib' ).connect( context.url )
+				.then( ( connection ) => timer.trace( 'connected', context.display ).return( connection ) )
+				.catch( ( err ) => {
+					if( retry ) {
+						timer.warning( 'connection failed', `${context.display} (retrying in ${( context.wait / 1000 ).toFixed( 2 )} seconds)` );
+						return Connection.wait( context.wait )
+							.then( () => Connection.connect( context, attempt + 1 ) );
+					}
+					else
+						return Promise.reject( err );
+				} );
 		}
 		get display() {
 			return this.context.display;

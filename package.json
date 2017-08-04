@@ -1,6 +1,6 @@
 {
   "name": "@jrapp/rabbitmq",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simplifies usage of RabbitMQ",
   "main": "./src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/joakimrapp/rabbitmq#readme",
   "devDependencies": {
-    "@jrapp/log-writer-console-readable": "^1.0.3",
+    "@jrapp/log-writer-console-readable": "*",
     "@jrapp/node-project-setup": "*"
   },
   "dependencies": {
