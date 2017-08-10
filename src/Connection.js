@@ -78,10 +78,11 @@ module.exports = ( log, Exchange ) => {
 			const context = this.context;
 			return Promise.all( context.exchanges.map( exchange => exchange.close() ) )
 				.then( () => {
-					if( context.connection )
+					if( context.connection ) {
 						log.trace( 'closing connection', context.display );
 						return log.timer( context.connection.close() )
 							.debug( 'connection closed', context.display ).promise;
+					}
 				} );
 		}
 		get exchange() {
